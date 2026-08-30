@@ -99,7 +99,7 @@ Default configuration:
 | ---------------------- | ------------------------------- |
 | Model                  | `unsloth/Qwen3.6-35B-A3B-NVFP4` |
 | Port                   | `8001`                          |
-| Context                | `32768`                         |
+| Context                | `131072`                        |
 | GPU memory utilization | `0.27`                          |
 | KV cache               | `fp8`                           |
 | Max sequences          | `4`                             |
@@ -132,7 +132,7 @@ The recipes are designed to coexist on a single 128 GB GB10 system.
 │
 ├── Qwen3.6 35B-A3B NVFP4
 │   ├── port 8001
-│   ├── 32k context
+│   ├── 128k context
 │   ├── 27% vLLM memory budget
 │   └── fast / vision / subagents
 │

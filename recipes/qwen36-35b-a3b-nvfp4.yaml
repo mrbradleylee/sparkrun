@@ -12,7 +12,7 @@ env:
 defaults:
   host: 0.0.0.0
   port: 8001
-  max_model_len: 32768
+  max_model_len: 131072
   gpu_memory_utilization: 0.27
   max_num_seqs: 4
   kv_cache_dtype: fp8
