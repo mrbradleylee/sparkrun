@@ -29,7 +29,7 @@ Add it to SparkRun:
 
 ```bash
 sparkrun registry add \
-  https://github.com/YOUR_GITHUB_USERNAME/sparkrun-recipes.git \
+  https://github.com/YOUR_GITHUB_USERNAME/sparkrun.git \
   --trust
 ```
 

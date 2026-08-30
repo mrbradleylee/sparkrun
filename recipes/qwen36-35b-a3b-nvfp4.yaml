@@ -3,6 +3,9 @@ model: unsloth/Qwen3.6-35B-A3B-NVFP4
 runtime: vllm
 container: vllm/vllm-openai:latest
 
+executor_config:
+  entrypoint: ""
+
 env:
   CUTE_DSL_ARCH: sm_121a
 

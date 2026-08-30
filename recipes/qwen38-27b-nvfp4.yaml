@@ -6,6 +6,9 @@ max_nodes: 1
 
 container: vllm/vllm-openai:latest
 
+executor_config:
+  entrypoint: ""
+
 metadata:
   description: Qwen3.8 27B NVFP4 primary coding model
   model_params: 27B
