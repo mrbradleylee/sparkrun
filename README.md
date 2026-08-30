@@ -100,11 +100,14 @@ Default configuration:
 | Model                  | `unsloth/Qwen3.6-35B-A3B-NVFP4` |
 | Port                   | `8001`                          |
 | Context                | `32768`                         |
-| GPU memory utilization | `0.30`                          |
+| GPU memory utilization | `0.27`                          |
 | KV cache               | `fp8`                           |
-| Max sequences          | `8`                             |
-| MoE backend            | `flashinfer_b12x`               |
+| Max sequences          | `4`                             |
+| MM processor cache     | `0.5 GiB`                       |
 | CUTE DSL architecture  | `sm_121a`                       |
+| Reasoning parser       | `qwen3`                         |
+| Tool parser            | `qwen3_coder`                   |
+| Auto tool choice       | Enabled                         |
 
 Launch:
 
@@ -112,7 +115,7 @@ Launch:
 sparkrun run @blee/qwen36-35b-a3b-nvfp4 --solo
 ```
 
-The recipe explicitly selects the optimized FlashInfer Blackwell MoE backend rather than relying on automatic backend selection.
+vLLM automatically selects a compatible MoE backend for the model and hardware.
 
 ## Default Dual-Model Layout
 
@@ -130,10 +133,10 @@ The recipes are designed to coexist on a single 128 GB GB10 system.
 ├── Qwen3.6 35B-A3B NVFP4
 │   ├── port 8001
 │   ├── 32k context
-│   ├── 30% vLLM memory budget
+│   ├── 27% vLLM memory budget
 │   └── fast / vision / subagents
 │
-└── 20% unallocated
+└── 23% unallocated
     └── OS / runtime / headroom
 ```
 
