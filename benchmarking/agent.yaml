@@ -1,0 +1,18 @@
+framework: llama-benchy
+
+pp:
+  - 8192
+
+tg:
+  - 512
+
+depth:
+  - 0
+  - 16384
+
+concurrency:
+  - 1
+
+runs: 3
+
+prefix_caching: true

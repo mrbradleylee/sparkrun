@@ -1,0 +1,15 @@
+framework: llama-benchy
+
+pp:
+  - 2048
+
+tg:
+  - 512
+
+depth:
+  - 0
+
+concurrency:
+  - 1
+
+runs: 3

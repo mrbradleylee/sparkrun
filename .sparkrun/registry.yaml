@@ -1,0 +1,5 @@
+registries:
+  - name: blee
+    description: Custom Spark inference recipes
+    recipes: recipes
+    benchmarks: benchmarking

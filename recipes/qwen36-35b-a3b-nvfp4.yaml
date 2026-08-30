@@ -1,0 +1,25 @@
+model: unsloth/Qwen3.6-35B-A3B-NVFP4
+
+runtime: vllm
+container: vllm/vllm-openai:latest
+
+env:
+  CUTE_DSL_ARCH: sm_121a
+
+defaults:
+  host: 0.0.0.0
+  port: 8001
+  max_model_len: 32768
+  gpu_memory_utilization: 0.30
+  max_num_seqs: 8
+  kv_cache_dtype: fp8
+
+command: |
+  vllm serve {model} \
+    --host {host} \
+    --port {port} \
+    --max-model-len {max_model_len} \
+    --gpu-memory-utilization {gpu_memory_utilization} \
+    --max-num-seqs {max_num_seqs} \
+    --kv-cache-dtype {kv_cache_dtype} \
+    --moe-backend flashinfer_b12x
