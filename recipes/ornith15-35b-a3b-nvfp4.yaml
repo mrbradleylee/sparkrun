@@ -34,7 +34,6 @@ command: |
     --mm-processor-cache-gb {mm_processor_cache_gb} \
     --attention-backend flashinfer \
     --enable-prefix-caching \
-    --load-format fastsafetensors \
     --trust-remote-code \
     --reasoning-parser {reasoning_parser} \
     --enable-auto-tool-choice \
