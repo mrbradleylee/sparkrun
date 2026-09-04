@@ -1,4 +1,4 @@
-model: unsloth/Qwen3.6-35B-A3B-NVFP4
+model: ornith-ai/Ornith-1.5-35B-A3B-NVFP4
 
 runtime: vllm
 container: vllm/vllm-openai:latest
@@ -11,6 +11,7 @@ env:
 
 defaults:
   host: 0.0.0.0
+  # alternative to base qwen
   port: 8001
   max_model_len: 131072
   gpu_memory_utilization: 0.30
@@ -19,7 +20,7 @@ defaults:
   kv_cache_dtype: fp8
   mm_processor_cache_gb: 0.5
   reasoning_parser: qwen3
-  tool_call_parser: qwen3_coder
+  tool_call_parser: qwen3_xml
 
 command: |
   vllm serve {model} \
@@ -34,6 +35,7 @@ command: |
     --attention-backend flashinfer \
     --enable-prefix-caching \
     --load-format fastsafetensors \
+    --trust-remote-code \
     --reasoning-parser {reasoning_parser} \
     --enable-auto-tool-choice \
     --tool-call-parser {tool_call_parser}
