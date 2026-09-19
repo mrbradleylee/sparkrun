@@ -40,6 +40,7 @@ defaults:
   kv_cache_dtype: fp8
   served_model_name: stormbreaker
 
+# removed:     --speculative-config '{"method":"mtp","num_speculative_tokens":{num_speculative_tokens}}' \
 command: |
   vllm serve {model} \
     --served-model-name {served_model_name} \
@@ -59,7 +60,6 @@ command: |
     --max-model-len {max_model_len} \
     --max-num-seqs {max_num_seqs} \
     --max-num-batched-tokens {max_num_batched_tokens} \
-    --speculative-config '{"method":"mtp","num_speculative_tokens":{num_speculative_tokens}}' \
     --gdn-decode-kernel b12x \
     --linear-backend b12x \
     --moe-backend b12x \
