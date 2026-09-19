@@ -11,6 +11,7 @@ The repository contains known-good model serving configurations and reusable ben
 ├── .sparkrun/
 │   └── registry.yaml
 ├── recipes/
+│   ├── qwen3.8-flash-next-nvfp4.yaml
 │   ├── qwen38-27b-nvfp4.yaml
 │   └── qwen36-35b-a3b-nvfp4.yaml
 ├── benchmarking/
@@ -52,6 +53,36 @@ sparkrun show @blee/qwen38-27b-nvfp4
 ```
 
 ## Models
+
+### Qwen3.8 Flash-Next NVFP4
+
+```text
+@blee/qwen3.8-flash-next-nvfp4
+```
+
+B12X-optimized, long-context Qwen3.8 Flash-Next serving on one DGX Spark.
+
+| Setting                | Default                                          |
+| ---------------------- | ------------------------------------------------ |
+| Model download ID      | `local-inference-lab/Qwen3.8-Flash-Next-NVFP4` |
+| API model name         | `stormbreaker`                                   |
+| Port                   | `8000`                                           |
+| Context                | `262144`                                         |
+| GPU memory utilization | `0.80`                                           |
+| KV cache               | `fp8`                                            |
+| Max sequences          | `8`                                              |
+| Batched tokens         | `8192`                                           |
+| Speculative decoding   | MTP, 4 tokens                                    |
+
+Launch it rootfully because B12X PLE's disk-backed table cache requires
+`io_uring` access that the current rootless container isolation denies:
+
+```bash
+sparkrun run @blee/qwen3.8-flash-next-nvfp4 --rootful
+```
+
+The vLLM API advertises `stormbreaker` from `/v1/models`; clients should use
+that stable identifier rather than the Hugging Face download ID.
 
 ### Qwen3.8 27B NVFP4
 
